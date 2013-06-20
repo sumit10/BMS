@@ -1,0 +1,69 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="BMS.comreg"
+	x:Name="Window"
+	Title="register"
+	Width="708" Height="499" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" FontSize="13.333">
+	<Window.Resources>
+		<ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+			<Grid>
+				<Rectangle Stroke="#FFA1A1A1" RadiusX="7" RadiusY="7">
+					<Rectangle.Fill>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FFA3A3A3" Offset="1"/>
+							<GradientStop Color="White"/>
+						</LinearGradientBrush>
+					</Rectangle.Fill>
+				</Rectangle>
+				<ContentPresenter Margin="23.335,5.336,3.998,2.664" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			</Grid>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate2" TargetType="{x:Type Button}">
+			<Grid>
+				<Rectangle Stroke="#FFA1A1A1" RadiusX="7" RadiusY="7">
+					<Rectangle.Fill>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FFA3A3A3" Offset="1"/>
+							<GradientStop Color="White"/>
+						</LinearGradientBrush>
+					</Rectangle.Fill>
+				</Rectangle>
+				<ContentPresenter Margin="27.07,5.257,4.665,5.998" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+			</Grid>
+		</ControlTemplate>
+	</Window.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="#FF434343">
+        <Rectangle Stroke="#FF8C8C8C" RadiusX="21.5" RadiusY="21.5">
+        	<Rectangle.Fill>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#FFF3F3F3" Offset="0"/>
+        			<GradientStop Color="#FFA3A3A3" Offset="1"/>
+        		</LinearGradientBrush>
+        	</Rectangle.Fill>
+        </Rectangle>
+        <TextBox Margin="250.959,84.483,238.041,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="22.04" x:Name="txtname" Background="White" />
+        <PasswordBox Margin="250,123.214,239,0" VerticalAlignment="Top" Height="22.04" x:Name="pbpassword" />
+        <TextBox Margin="250,159.843,239,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="22.04" x:Name="txtaddress"/>
+        <TextBox Margin="250,211.64,239,227.32" Text="" TextWrapping="Wrap" x:Name="txtphone"/>
+        <TextBox Margin="250,0,239,163.041" Text="" TextWrapping="Wrap" Height="41.04" VerticalAlignment="Bottom" x:Name="txtprokey"/>
+        <Button Margin="250.959,0,0,99" VerticalAlignment="Bottom" Height="29" Content="Register" Click="Button_Click" HorizontalAlignment="Left" Width="95" Template="{DynamicResource ButtonControlTemplate1}" >
+        	<Button.Background>
+        		<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+        			<GradientStop Color="#FFF3F3F3" Offset="0"/>
+        			<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+        			<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+        			<GradientStop Color="#FFCDCDCD" Offset="1"/>
+        		</LinearGradientBrush>
+        	</Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Right" Margin="0,0,239,99" VerticalAlignment="Bottom" Width="91" Height="29" Content="Close" Click="Button_Click_1" Template="{DynamicResource ButtonControlTemplate2}" />
+        <Label RenderTransformOrigin="1,-1.117" HorizontalAlignment="Left" Margin="110.959,82.483,0,0" VerticalAlignment="Top" Content="Company Name" Height="29.386" Width="119.346" FontSize="13.333"/>
+        <Label RenderTransformOrigin="1,-1.117" HorizontalAlignment="Left" Margin="110.959,115.869,0,0" VerticalAlignment="Top" Content="Password" Width="74.899" Height="29.385" FontSize="13.333"/>
+        <Label RenderTransformOrigin="1,-1.117" HorizontalAlignment="Left" Margin="110.959,157.843,0,0" VerticalAlignment="Top" Content="Address" Height="29.385" Width="65.596" FontSize="13.333"/>
+        <Label RenderTransformOrigin="1,-1.117" HorizontalAlignment="Left" Margin="110.959,204.294,0,227.32" Content="Phone Number" Width="113.054" FontSize="13.333"/>
+        <Label RenderTransformOrigin="1,-1.117" HorizontalAlignment="Left" Margin="110,0,0,163.041" Content="Product key" Width="90.847" Height="48.386" VerticalAlignment="Bottom" FontSize="13.333"/>
+        <Label Margin="19,15,330,0" VerticalAlignment="Top" Height="46" Content="Company Registration Form" FontSize="20" FontFamily="Shruti"/>
+    </Grid>
+</Window>

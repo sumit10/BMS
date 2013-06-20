@@ -1,0 +1,91 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:Custom="http://schemas.microsoft.com/wpf/2008/toolkit"
+	xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+	x:Class="BMS.stockview"
+	x:Name="stockview1" Width="800" Height="600">
+	<UserControl.Resources>
+		<ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True"/>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate3" TargetType="{x:Type Button}">
+			<Grid>
+				<Rectangle x:Name="rectangle" Fill="#FF2C9EEE" Stroke="{x:Null}" Margin="0,-1,28,-2.5" RadiusX="3" RadiusY="39"/>
+				<Image x:Name="image1" Margin="-1.75,-3.906,18.27,-8.156" Source="new dashboard_Images/save_revert.png" Stretch="Fill" Visibility="Hidden"/>
+				<Image x:Name="image" Margin="13.5,3.333,34.874,0.65" Source="new dashboard_Images/edit_btn.png" Stretch="Fill"/>
+				<Image x:Name="image2" Margin="13.5,3.333,34.874,0.65" Source="new dashboard_Images/edit_btn_revert.png" Stretch="Fill" Visibility="Hidden"/>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="rectangle" Value="Hidden"/>
+					<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+					<Setter Property="Visibility" TargetName="image1" Value="Visible"/>
+					<Setter Property="Visibility" TargetName="image2" Value="Visible"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+	</UserControl.Resources>
+
+    <Canvas>
+    	<Rectangle Stroke="#FF2C9EEE" RadiusX="10" RadiusY="10" Width="800" Height="608" Opacity="0.985" Canvas.Top="-4" Fill="White"/>
+        <TextBox Canvas.Left="87.5" Canvas.Top="63" Height="30.001" x:Name="textBox1" Width="271.5" KeyUp="textBox1_Keyup" BorderThickness="0,0,0,2" FontSize="16" Padding="0" Background="{x:Null}" BorderBrush="#FF2D9FEE" FontFamily="Rockwell"/>
+        <ListBox Canvas.Left="42.5" Canvas.Top="100" Height="469.5" x:Name="listBox1" Width="316.5" MouseDoubleClick="listBox1_MouseDoubleClick" Cursor="Hand" ToolTip="Stock List" FontSize="16" BorderBrush="#FF2C9EEE" FontFamily="Rockwell" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Cname}" Width="150"/>
+                        <TextBlock Text="{Binding Cbalstock}" Width="150"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Canvas.Left="56" Canvas.Top="317" Height="57" x:Name="nostock" Width="288" Content="Commodity not found!" FontFamily="Rockwell" FontSize="26.667" BorderThickness="0,2" BorderBrush="#FF51ADED" Foreground="#FF51ADED" Visibility="Hidden"/>
+        <TextBox Height="28.445" x:Name="txtconame" Width="144.503" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Left="607.497" Canvas.Top="96.335" Background="{x:Null}" BorderThickness="0,0,0,2" FontSize="16" BorderBrush="#FF51ADED" FontFamily="Rockwell" />
+		<ComboBox VerticalAlignment="Top" Height="23.331" HorizontalAlignment="Right" Width="144.503" x:Name="cmbuom" IsEditable="True" Canvas.Left="608.497" Canvas.Top="149.743" Background="White" BorderThickness="1" OpacityMask="White" >
+			<ComboBox.BorderBrush>
+				<LinearGradientBrush EndPoint="0,20" StartPoint="0,0" MappingMode="Absolute">
+					<GradientStop Color="#FFABADB3" Offset="0.459"/>
+					<GradientStop Color="#FFE2E3EA"/>
+					<GradientStop Color="White" Offset="1"/>
+				</LinearGradientBrush>
+			</ComboBox.BorderBrush>
+		</ComboBox>
+		<TextBox Height="28.886" x:Name="txtcopp" VerticalAlignment="Top" HorizontalAlignment="Right" Width="144.503" Canvas.Left="608.832" Canvas.Top="184.801" Background="{x:Null}" BorderThickness="0,0,0,2" FontSize="16" BorderBrush="#FF51ADED" FontFamily="Rockwell" />
+        <TextBox Canvas.Left="607.497" Canvas.Top="149.743" Height="23" x:Name="txtcmb" Width="120" IsEnabled="False" Visibility="Hidden" />
+		<TextBox x:Name="txtcosp" HorizontalAlignment="Right" Width="144.503" Canvas.Left="609.497" Canvas.Top="232.907" Height="26.664" Background="{x:Null}" BorderThickness="0,0,0,2" FontSize="16" BorderBrush="#FF51ADED" FontFamily="Rockwell" />
+		<TextBox x:Name="txtcoops" Height="28.886" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144.503" Canvas.Left="610.497" Canvas.Top="281.568" Background="{x:Null}" BorderThickness="0,0,0,2" FontSize="16" BorderBrush="#FF51ADED" FontFamily="Rockwell" />
+		<Custom:DatePicker Height="24.608" x:Name="dpdate" VerticalAlignment="Bottom" RenderTransformOrigin="0.434,0.48" Canvas.Left="608.83" Canvas.Top="334.549" Width="144.503" BorderThickness="0,0,0,2" BorderBrush="#FF51ADED" Background="{x:Null}" FontFamily="Rockwell" FontSize="16" />
+		<Label Height="37.128" HorizontalAlignment="Left" x:Name="label2" VerticalAlignment="Top" Width="218.5" Content="Unit of Measurement" Canvas.Left="381.012" Canvas.Top="144.28" FontSize="21.333" FontFamily="Rockwell"/>
+		<Label HorizontalAlignment="Left" x:Name="label3" Width="157.622" Height="30.219" VerticalAlignment="Top" Content="Purchase Price" Canvas.Left="384.68" Canvas.Top="182.468" FontSize="21.333" FontFamily="Rockwell"/>
+		<Label Height="34.386" HorizontalAlignment="Left" x:Name="label5" VerticalAlignment="Bottom" Width="175.122" Content="Opening Stock" Canvas.Left="384.512" Canvas.Top="282.068" FontSize="21.333" FontFamily="Rockwell"/>
+		<Label Height="31.108" HorizontalAlignment="Left" x:Name="label6" VerticalAlignment="Bottom" Width="137.622" Content="Date" Canvas.Left="386.679" Canvas.Top="325.565" FontSize="21.333" FontFamily="Rockwell"/>
+		<!--<Button Height="28.445" HorizontalAlignment="Left" x:Name="button2" VerticalAlignment="Bottom" Width="86.014" Click="button2_Click_1" Content="Save" Canvas.Left="413.084" Canvas.Top="353.055"/>-->
+		<Label HorizontalAlignment="Right" x:Name="label4" Width="125.622" Content="Sales Price" Height="38.664" VerticalAlignment="Bottom" Canvas.Left="385.512" Canvas.Top="233.407" FontSize="21.333" FontFamily="Rockwell" />
+		<Label Height="34.445" HorizontalAlignment="Right" x:Name="label1" VerticalAlignment="Bottom" Width="193.122" Content="Commodity Name" Canvas.Left="381.345" Canvas.Top="99.668" FontSize="21.333" FontFamily="Rockwell" />
+        <Button Canvas.Left="506.809" Canvas.Top="404.472" Height="31.108" x:Name="save" Width="126.191" Click="button2_Click_1" Content="Save" FontSize="21.333" Foreground="White" Style="{DynamicResource save_btn}"/>
+        <Button Canvas.Left="509.5" Canvas.Top="405.086" Click="btn_update_Click" Height="31" x:Name="btn_update" Width="123.5" Content="Update" Style="{DynamicResource update_btn}" Visibility="Hidden"/> 
+        <Canvas Canvas.Left="444.497" Canvas.Top="395.086" Height="49.662" x:Name="can_edit" Width="248" Visibility="Hidden">
+            <Button Canvas.Left="176.921" Canvas.Top="12" Click="edit_Click" Height="31" x:Name="btn_edit" Visibility="Visible" Width="77.77" Content="Edit" Template="{DynamicResource ButtonControlTemplate3}"/>
+            <Button Canvas.Left="0" Canvas.Top="11" Click="btn_newuser_Click" Height="31" x:Name="btn_newuser" Width="99" Content="New Customer" Style="{DynamicResource add new}"/>
+        </Canvas>
+        <TextBox Canvas.Left="615.997" Canvas.Top="284.472" Height="23" x:Name="txtbalstock" Width="120" IsEnabled="False" Visibility="Hidden" />
+        <Image Width="33" Height="33" Source="new dashboard_Images/bg/search.png" Stretch="Fill" Canvas.Left="42" Canvas.Top="63"/>
+        <Rectangle Fill="#FF3AAEFF" Width="801" Height="44.168" Canvas.Top="-4.5"/>
+        <Label Width="99" Height="37.668" Content="STOCK" Canvas.Left="340.5" Canvas.Top="-1" FontFamily="Tintin Majuscules" FontSize="24" Foreground="White"/>
+        <Canvas x:Name="message_box" Width="846" Height="630" Background="#32000000" Canvas.Left="-26" Visibility="Hidden">
+        	<Rectangle Fill="White" Stroke="#FF51ADED" RadiusX="15.5" RadiusY="15.5" Width="633" Height="160" Canvas.Left="104.667" Canvas.Top="229"/>
+        	<Rectangle Fill="#FF51ADED" Stroke="#FF51ADED" Width="633" Height="31.334" Canvas.Left="104.667" Canvas.Top="229"/>
+        	<Label x:Name="lbl_message" Height="34.294" Content=" Data Saved" FontFamily="Rockwell" FontSize="24" Canvas.Left="352.496" Canvas.Top="260.334"/>
+        	<Button x:Name="btn_ok" Click="msgclick" Style="{DynamicResource ok_btn}" Width="56.333" Height="48" Content="Button" Canvas.Left="392.166" Canvas.Top="301.294"/>
+        	<Button x:Name="btn_error" Click="msgclick" Width="75" Content="Button" Style="{DynamicResource error_btn}" Canvas.Left="366" Canvas.Top="298"/>
+        	<Label Width="104.833" Height="31.334" Content="Message" FontFamily="Tintin Majuscules" FontSize="21.333" Foreground="White" Canvas.Left="366" Canvas.Top="229"/>
+        </Canvas>
+        <!--<Button Height="30.604" HorizontalAlignment="Left" x:Name="button2" VerticalAlignment="Bottom" Width="91.129" Click="button2_Click_1" Content="Save" Margin="414.15,0,0,171.09" d:LayoutOverrides="VerticalAlignment"/>-->
+	</Canvas>
+</UserControl>

@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{84FB8858-AA73-4D0D-BB33-DE5C554BF398}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BMS</RootNamespace>
+    <AssemblyName>BMS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <StartupObject>BMS.App</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ExpressionBlendVersion>3.0.1927.0</ExpressionBlendVersion>
+    <ManifestCertificateThumbprint>237568AF3A3B43E54ADD3BE2247B484958CFF4BE</ManifestCertificateThumbprint>
+    <ManifestKeyFile>BMS_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignManifests>true</SignManifests>
+    <ApplicationIcon>s4.ico</ApplicationIcon>
+    <PublishUrl>C:\Users\Sumit\Music\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="InputSimulator, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Sumit\Downloads\InputSimulator.0.1.0.0-bin\InputSimulator.0.1.0.0-bin\Debug\InputSimulator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Prototyping.SketchControls, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="comreg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="report\print_invoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="report\reportledger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="report\report_cr_dr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="test2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="testwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cashview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\customerview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\purchaseview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\saleview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\save_btn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\stockview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\supplierview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\application.cs" />
+    <Compile Include="Model\basemodel.cs" />
+    <Compile Include="comreg.xaml.cs">
+      <DependentUpon>comreg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard.xaml.cs">
+      <DependentUpon>dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\cashmodel.cs" />
+    <Compile Include="Model\commoditymodel.cs" />
+    <Compile Include="Model\autocomplete.cs" />
+    <Compile Include="Model\com_rate.cs" />
+    <Compile Include="Model\Fillcombo.cs" />
+    <Compile Include="Model\ledgermodel.cs" />
+    <Compile Include="Model\loginmodel.cs" />
+    <Compile Include="Model\purchasemodel.cs" />
+    <Compile Include="Model\salesmodel.cs" />
+    <Compile Include="Model\testmodel.cs" />
+    <Compile Include="Model\transactionmodel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="report\print_invoice.xaml.cs">
+      <DependentUpon>print_invoice.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="report\reportledger.xaml.cs">
+      <DependentUpon>reportledger.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="report\report_cr_dr.xaml.cs">
+      <DependentUpon>report_cr_dr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="test2.xaml.cs">
+      <DependentUpon>test2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="testwindow.xaml.cs">
+      <DependentUpon>testwindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cashview.xaml.cs">
+      <DependentUpon>Cashview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\customerview.xaml.cs">
+      <DependentUpon>customerview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\purchaseview.xaml.cs">
+      <DependentUpon>purchaseview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\saleview.xaml.cs">
+      <DependentUpon>saleview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\stockview.xaml.cs">
+      <DependentUpon>stockview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\supplierview.xaml.cs">
+      <DependentUpon>supplierview.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="bin\Debug\BMS.vshost.exe.manifest" />
+    <None Include="BMS_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="backgroung.png" />
+    <Content Include="bin\Debug\BMS.pdb" />
+    <Content Include="bin\Debug\BMS.vshost.exe" />
+    <Content Include="bin\Debug\masterdb.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\WPFToolkit.dll" />
+    <Resource Include="s4.ico" />
+    <Resource Include="s3.ico" />
+    <Resource Include="Layer 2.png" />
+    <Resource Include="Username.png" />
+    <Resource Include="X.png" />
+    <Resource Include="splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+    <Resource Include="Image2.png" />
+    <Resource Include="Image3.png" />
+    <Resource Include="Login_Form_Images\backgroung.png" />
+    <Resource Include="Login_Form_Images\customer_REVERT.png" />
+    <Resource Include="Login_Form_Images\left_bottom.PNG" />
+    <Resource Include="Login_Form_Images\left_bottom_w.PNG" />
+    <Resource Include="Login_Form_Images\left_top.png" />
+    <Resource Include="Login_Form_Images\left_top_w.PNG" />
+    <Resource Include="Login_Form_Images\logo.PNG" />
+    <Resource Include="Login_Form_Images\orange.png" />
+    <Resource Include="Login_Form_Images\purchase.png" />
+    <Resource Include="Login_Form_Images\purchase_REVERT.PNG" />
+    <Resource Include="Login_Form_Images\right_bottom.PNG" />
+    <Resource Include="Login_Form_Images\right_bottom_w.PNG" />
+    <Resource Include="Login_Form_Images\right_top.PNG" />
+    <Resource Include="Login_Form_Images\right_top_w.PNG" />
+    <Resource Include="Login_Form_Images\roundbottom.PNG" />
+    <Resource Include="Login_Form_Images\roundtop.PNG" />
+    <Resource Include="Login_Form_Images\sales.PNG" />
+    <Resource Include="Login_Form_Images\sales_REVERT.PNG" />
+    <Resource Include="Login_Form_Images\stock white.PNG" />
+    <Resource Include="Login_Form_Images\stock_revert.PNG" />
+    <Resource Include="Login_Form_Images\supplier.png" />
+    <Resource Include="Login_Form_Images\supplier_REVERT.png" />
+    <Resource Include="Login_Form_Images\top.PNG" />
+    <Resource Include="new dashboard\arrow.png" />
+    <Resource Include="new dashboard\background.png" />
+    <Resource Include="new dashboard\customer hover.PNG" />
+    <Resource Include="new dashboard\customer.PNG" />
+    <Resource Include="new dashboard\hover copy.PNG" />
+    <Resource Include="new dashboard\Image1.png" />
+    <Resource Include="new dashboard\Image2.png" />
+    <Resource Include="new dashboard\logoff.PNG" />
+    <Resource Include="new dashboard\new dashboard_Images\background1.png" />
+    <Resource Include="new dashboard\new dashboard_Images\bg_1st.png" />
+    <Resource Include="new dashboard\new dashboard_Images\bg_header.png" />
+    <Resource Include="new dashboard\new dashboard_Images\BIG_BG.png" />
+    <Resource Include="new dashboard\new dashboard_Images\bottom.png" />
+    <Resource Include="new dashboard\new dashboard_Images\cash.png" />
+    <Resource Include="new dashboard\new dashboard_Images\cash_revert.png" />
+    <Resource Include="new dashboard\new dashboard_Images\erroe3.png" />
+    <Resource Include="new dashboard\new dashboard_Images\error.png" />
+    <Resource Include="new dashboard\new dashboard_Images\left side.png" />
+    <Resource Include="new dashboard\new dashboard_Images\right side.png" />
+    <Resource Include="new dashboard\new dashboard_Images\topb.png" />
+    <Resource Include="new dashboard\new_bg\add_new_customer.png" />
+    <Resource Include="new dashboard\new_bg\add_new_customer_revert.png" />
+    <Resource Include="new dashboard\new_bg\arrow.png" />
+    <Resource Include="new dashboard\new_bg\arrow_as.png" />
+    <Resource Include="new dashboard\new_bg\customer-hover.PNG" />
+    <Resource Include="new dashboard\new_bg\purchase_hover.PNG" />
+    <Resource Include="new dashboard\new_bg\sale_shover.PNG" />
+    <Resource Include="new dashboard\new_bg\suplier_hover.PNG" />
+    <Resource Include="new dashboard\new_bg\tab_hover.PNG" />
+    <Resource Include="new dashboard\new_bg\tab_top_hover.PNG" />
+    <Resource Include="new dashboard\new_bg\tick.png" />
+    <Resource Include="new dashboard\new_bg\tick2.png" />
+    <Resource Include="new dashboard\placeholder.png" />
+    <Resource Include="new dashboard\purchase.PNG" />
+    <Resource Include="new dashboard\purchase_hover.PNG" />
+    <Resource Include="new dashboard\sales.PNG" />
+    <Resource Include="new dashboard\sale_shover.PNG" />
+    <Resource Include="new dashboard\stock.PNG" />
+    <Resource Include="new dashboard\stock_hover.PNG" />
+    <Resource Include="new dashboard\suplier.PNG" />
+    <Resource Include="new dashboard\suplier_hover.PNG" />
+    <Resource Include="new dashboard\tab_hover.PNG" />
+    <Resource Include="new dashboard\tab_top_hover.PNG" />
+    <Resource Include="report\bill_img.PNG" />
+    <Resource Include="report\image.jpeg" />
+    <Resource Include="report\report_thoda_photoshop_ka _jarurat_ha.jpg" />
+    <Resource Include="Untitled-3 copy_Images\Image.png" />
+    <Resource Include="Views\Image2.png" />
+    <Resource Include="Views\Image3.png" />
+    <Resource Include="Views\Image4.png" />
+    <Resource Include="Views\Image7.png" />
+    <Resource Include="Views\new dashboard_Images\add_img.png" />
+    <Resource Include="Views\new dashboard_Images\add_img_revert.png" />
+    <Resource Include="Views\new dashboard_Images\back_btn.png" />
+    <Resource Include="Views\new dashboard_Images\bg\back_btn_white.png" />
+    <Resource Include="Views\new dashboard_Images\bg\bg1.png" />
+    <Resource Include="Views\new dashboard_Images\bg\bg2.png" />
+    <Resource Include="Views\new dashboard_Images\bg\bg3.png" />
+    <Resource Include="Views\new dashboard_Images\bg\expand.png" />
+    <Resource Include="Views\new dashboard_Images\bg\expand2.png" />
+    <Resource Include="Views\new dashboard_Images\bg\expand2_revert.png" />
+    <Resource Include="Views\new dashboard_Images\bg\expand_revert.png" />
+    <Resource Include="Views\new dashboard_Images\bg\order.png" />
+    <Resource Include="Views\new dashboard_Images\bg\order_revert.png" />
+    <Resource Include="Views\new dashboard_Images\bg\print_btn.png" />
+    <Resource Include="Views\new dashboard_Images\bg\print_btn_reert.png" />
+    <Resource Include="Views\new dashboard_Images\bg\search.png" />
+    <Resource Include="Views\new dashboard_Images\bg\update.png" />
+    <Resource Include="Views\new dashboard_Images\bg\update_revert.png" />
+    <Resource Include="Views\new dashboard_Images\bg\view_btn.png" />
+    <Resource Include="Views\new dashboard_Images\bg\view_btn_revert.png" />
+    <Resource Include="Views\new dashboard_Images\bg_right.png" />
+    <Resource Include="Views\new dashboard_Images\cam.png" />
+    <Resource Include="Views\new dashboard_Images\cash\add_btn.png" />
+    <Resource Include="Views\new dashboard_Images\cash\arrow.png" />
+    <Resource Include="Views\new dashboard_Images\cash\close.png" />
+    <Resource Include="Views\new dashboard_Images\cash\close_btn.png" />
+    <Resource Include="Views\new dashboard_Images\cash\close_cir.png" />
+    <Resource Include="Views\new dashboard_Images\cash\create-cash.png" />
+    <Resource Include="Views\new dashboard_Images\cash\tab.png" />
+    <Resource Include="Views\new dashboard_Images\cash\tab_top_hover.PNG" />
+    <Resource Include="Views\new dashboard_Images\cash\Untitled-7.png" />
+    <Resource Include="Views\new dashboard_Images\circle copy 3.png" />
+    <Resource Include="Views\new dashboard_Images\circle copy 4.png" />
+    <Resource Include="Views\new dashboard_Images\close.png" />
+    <Resource Include="Views\new dashboard_Images\close_cir.png" />
+    <Resource Include="Views\new dashboard_Images\edit_btn.png" />
+    <Resource Include="Views\new dashboard_Images\edit_btn_revert.png" />
+    <Resource Include="Views\new dashboard_Images\Image1.png" />
+    <Resource Include="Views\new dashboard_Images\img_btn.png" />
+    <Resource Include="Views\new dashboard_Images\MIddel Ring.png" />
+    <Resource Include="Views\new dashboard_Images\placeholder.png" />
+    <Resource Include="Views\new dashboard_Images\SAVE_BTN.png" />
+    <Resource Include="Views\new dashboard_Images\save_icon.png" />
+    <Resource Include="Views\new dashboard_Images\save_icon_revert.png" />
+    <Resource Include="Views\new dashboard_Images\save_revert.png" />
+    <Resource Include="Views\new dashboard_Images\Tools.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>call "$(DevEnvDir)\..\..\VC\bin\vcvars32.bat"
+call "$(DevEnvDir)\..\..\VC\bin\editbin.exe" /NXCOMPAT:NO "$(TargetPath)"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

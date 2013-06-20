@@ -1,0 +1,32 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="BMS.testwindow"
+    Title="testwindow"
+    Loaded="Window_Loaded"
+    Height="360" Width="693">
+	<Grid>
+		<Canvas>
+			<TextBox Height="23" HorizontalAlignment="Left" x:Name="textBox1" Width="120" Canvas.Left="22" Canvas.Top="36" />
+			<ListBox x:Name="listBox1"  Width="171" Height="146" Canvas.Left="87" Canvas.Top="97">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding Lid}">
+                            <TextBlock Text="{Binding Lname}" TextWrapping="Wrap"/>
+                            
+                        <!--<TextBlock Text="  "/>
+                         <TextBlock Text="{Binding lgroup}"/>-->
+                    </StackPanel >
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Canvas.Left="0" Canvas.Top="168" Height="23" Name="b1" Width="75" Click="b1_Click">Button</Button>
+            <my:Chart Canvas.Left="261" Canvas.Top="16" Height="306" Name="chart1" Width="436" xmlns:my="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" >
+                <my:PieSeries DependentValuePath="Value" 	IndependentValuePath="Key" ItemsSource="{Binding}" />
+            </my:Chart>
+            <!--<chartingToolkit:Chart Height="262" HorizontalAlignment="Left" Margin="33,0,0,620" Name="columnChart" Title="Column Series Demo"  VerticalAlignment="Bottom" Width="360">
+                <chartingToolkit:ColumnSeries DependentValuePath="Value" 	IndependentValuePath="Key" ItemsSource="{Binding}" />
+            </chartingToolkit:Chart>-->
+        </Canvas>
+	</Grid>
+</Window>

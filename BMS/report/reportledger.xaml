@@ -1,0 +1,41 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="BMS.report.reportledger"
+	x:Name="UserControl" Width="815.875" Height="1056">
+	<Canvas x:Name="layout" Width="815.875" Height="1056">
+		<Label Content="Credit Side" Canvas.Left="450" Canvas.Top="130.5"/>
+		<Label Content="Debit Side" Canvas.Left="30" Canvas.Top="130.5"/>
+		<Label Content="A/c. Holder Name" Canvas.Left="209.5" Canvas.Top="57.5" FontSize="16"/>
+		<Label Content="Date" Canvas.Left="613.5" Canvas.Top="8"/>
+		<ListBox x:Name="lst_dr" Width="379.5" Height="778.5" Canvas.Left="30" Canvas.Top="204" Background="{x:Null}" BorderBrush="{x:Null}">
+		<ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding tdate}" Width="67.5"/>
+                            <TextBlock Text="To   " Width="81.177" HorizontalAlignment="Center" TextAlignment="Center" />
+                  			<TextBlock Text="{Binding drlname}" Width="64.5" TextAlignment="Center"/>
+                    		<TextBlock Text="{Binding amt}" TextAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+		</ListBox.ItemTemplate>
+		</ListBox>
+		<ListBox x:Name="lst_cr" Width="345" Height="784.5" Canvas.Left="450" Canvas.Top="204" Background="{x:Null}" BorderBrush="{x:Null}">
+		 <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="{Binding tdate}" Width="100"/>
+                            <TextBlock Text="By   " />
+                            <TextBlock Text="{Binding crlname}" Width="100"/>
+                           <TextBlock Text="{Binding amt}" />
+                 		</StackPanel>
+                    </DataTemplate>
+         </ListBox.ItemTemplate>
+		</ListBox>
+		<Label x:Name="r_acame" Content="A/c. Holder Name" FontSize="16" Canvas.Left="365.5" Canvas.Top="57.5"/>
+		<Label x:Name="r_date" Content="Date" Canvas.Left="666.5" Canvas.Top="8"/>
+	</Canvas>
+</UserControl>

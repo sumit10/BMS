@@ -1,0 +1,36 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="BMS.report.print_invoice"
+    Height="1056" Width="815.875" mc:Ignorable="d">
+    <Canvas x:Name="layout" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment">
+    	<Image Width="815.875" Height="1056" Source="image.jpeg" Stretch="Fill"/>
+    	<Label x:Name="lbl_cusname" Width="210.593" Height="34.947" Content="Navrang metals" Canvas.Left="50.698" Canvas.Top="150.882" FontFamily="Rockwell" FontSize="21.333"/>
+    	<Label x:Name="lbl_address" Width="381.94" Height="77.675" Content="Shop/104, Shital Apt, Anand Nagar, &#xd;&#xa;Vasai(west)" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="50.698" Canvas.Top="178.818"/>
+    	<Label x:Name="tax_no" Width="38.532" Height="26.947" Content="101" Canvas.Left="606.032" Canvas.Top="150.882" FontSize="16" FontFamily="Rockwell"/>
+    	<Label x:Name="challan_no" Width="44.199" Height="26.947" Content="101" FontSize="16" Canvas.Left="606.022" Canvas.Top="175.539" FontFamily="Rockwell"/>
+    	<Label x:Name="tax_date" Width="114.672" Height="26.948" Content="05/05/13" FontSize="16" Canvas.Left="665.203" Canvas.Top="148.063" FontFamily="Rockwell" RenderTransformOrigin="0.5,0.5"/>
+    	<Label x:Name="challan_date" Width="114.672" Height="26.947" Content="05/05/13" FontSize="16" Canvas.Left="667.857" Canvas.Top="175.011" FontFamily="Rockwell"/>
+    	<Label x:Name="total_amt" Width="78.156" Height="29.702" Content="1,00,000" Canvas.Left="694.27" Canvas.Top="687.598" FontFamily="Rockwell" FontSize="18.667"/>
+    	<Label x:Name="freight" Width="78.156" Height="29.703" Content="350" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="695.27" Canvas.Top="714.3"/>
+    	<Label x:Name="vat" Width="25.156" Height="29.701" Content="2" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="628.032" Canvas.Top="739.325"/>
+    	<ListBox x:Name="lst_item" Width="726.728" Height="269.287" Canvas.Left="50.698" Canvas.Top="363.608" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,5" FontSize="13.333">
+		<ListBox.ItemTemplate>
+        			<DataTemplate>
+        				<StackPanel Orientation="Horizontal">
+        					<TextBlock Text="{Binding scomname}" Width="150"/>
+        					<TextBlock Text="{Binding sqnty}" Width="20"/>
+        					<TextBlock Text="{Binding suom}" Width="70"/>
+        					<TextBlock Text="{Binding srate}" Width="60"/>
+        					<TextBlock Text="{Binding ex_type}" Width="20"/>
+        					<TextBlock Text="{Binding samt}" Width="100" TextAlignment="Right"/>
+        				</StackPanel>
+        			</DataTemplate>
+		</ListBox.ItemTemplate>
+		</ListBox>
+    	<Label x:Name="roundoff" Width="78.156" Height="29.704" Content="0" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="694.27" Canvas.Top="769.026"/>
+    	<Label x:Name="grand_tot" Width="78.156" Height="29.704" Content="1,02,350" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="694.27" Canvas.Top="794.23"/>
+    	<Label x:Name="vat_Copy" Width="57.156" Height="29.701" Content="2000" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="693.203" Canvas.Top="739.325"/> 
+        
+    </Canvas>
+</UserControl> 

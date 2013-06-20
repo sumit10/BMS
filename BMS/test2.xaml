@@ -1,0 +1,19 @@
+﻿<Window x:Class="BMS.test2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cv="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:ccv="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    Title="test2" Height="300" Loaded="Window_Loaded" Width="300">
+    <Grid>
+        <ccv:Chart Name="mcChart" 
+           Width="400" Height="250"
+           Background="LightSteelBlue" Margin="0,25,165,100">
+            <ccv:Chart.Series>
+                <ccv:BubbleSeries  Name="barseries" Title="Stock"  
+                    IndependentValueBinding="{Binding Path=name}"
+                    DependentValueBinding="{Binding Path=value}">
+                </ccv:BubbleSeries>
+            </ccv:Chart.Series>
+        </ccv:Chart>
+    </Grid>
+</Window>

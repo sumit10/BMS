@@ -1,0 +1,9 @@
+﻿<Page x:Class="test.test2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="test2">
+    <Grid>
+        <Button Height="23" Margin="98,101,127,0" Name="button1" VerticalAlignment="Top" Click="button1_Click">Button</Button>
+        <CheckBox Margin="33,52,147,0" Name="checkBox1" Checked="checkBox1_Checked" Height="16" VerticalAlignment="Top">CheckBox</CheckBox>
+    </Grid>
+</Page>

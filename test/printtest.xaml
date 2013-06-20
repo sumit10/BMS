@@ -1,0 +1,10 @@
+﻿<Window x:Class="test.printtest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="printtest" Height="364" Width="524">
+    <Grid>
+        <Button Content="Print Simple Text" Height="37" HorizontalAlignment="Left" Margin="22,21,0,0"
+                Name="PrintSimpleTextButton" VerticalAlignment="Top" Width="134"
+                Click="PrintSimpleTextButton_Click" />
+    </Grid>
+</Window>

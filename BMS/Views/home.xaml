@@ -1,0 +1,307 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:ccv="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="BMS.Views.home"
+    Loaded="UserControl_Loaded"
+    Height="600" Width="800" mc:Ignorable="d">
+	<UserControl.Resources>
+
+         
+		<Style x:Key="close" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas>
+							<Image x:Name="image1" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images\cash\close_cir.png" Stretch="Fill" Visibility="Hidden"/>
+							<Image x:Name="image" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images\cash\close.png" Stretch="Fill"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+								<Setter Property="Visibility" TargetName="image1" Value="Visible"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="debtor">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_cr" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.705"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.17"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="label1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.705"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.17"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_dr" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="135.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="460.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="-330"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="-4"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="4.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="500.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_btn" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="debtor_reverse">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_cr" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="label1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_dr" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="465.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="122.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.3000000" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="-345"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_reverse" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.485"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="505.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="164.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="expand_btn" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="creditor">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_creditor" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-177"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="-220.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_creditor" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="370"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="543"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_cr" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="492"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="367.331"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.3000000" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_expand" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="creditor_reverse">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_creditor" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="-202.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_creditor" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="518"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="171"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="lst_cr" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="474"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="130"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="352"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="6"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_up" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="top_debtor" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="cr_expand" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="cr_expand" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+    <Canvas  Width="800" Height="600">
+        <Rectangle Fill="White" Width="797.333" Height="604" RadiusX="11" RadiusY="11" Canvas.Top="-2" Canvas.Left="-0.333"/>
+        <Canvas x:Name="top_creditor" Width="333" Height="174.5" Canvas.Left="77" Canvas.Top="264" RenderTransformOrigin="0.5,0.5">
+        	<Canvas.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</Canvas.RenderTransform>
+        	<Label x:Name="label1" Height="44.5" Content="Top  Creditors " FontFamily="Rockwell" FontSize="24" Width="243" RenderTransformOrigin="0.5,0.5">
+        		<Label.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform/>
+        				<SkewTransform/>
+        				<RotateTransform/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Label.RenderTransform>
+        	</Label>
+        	<ListBox x:Name="lst_cr" FontFamily="Rockwell" FontSize="17.333" BorderBrush="#FF2C9EEE" Background="White" Foreground="Black" Width="333" Height="130" RenderTransformOrigin="0.5,0.5" Canvas.Top="44.5">
+        		<ListBox.ItemTemplate>
+        			<DataTemplate>
+        				<StackPanel Orientation="Horizontal">
+        					<TextBlock Text="{Binding Lname}" Width="139.75"/>
+        					<TextBlock Text="{Binding CurrBalance}" Width="142" TextAlignment="Right"/>
+        				</StackPanel>
+        			</DataTemplate>
+        		</ListBox.ItemTemplate>
+        		<ListBox.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform/>
+        				<SkewTransform/>
+        				<RotateTransform/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</ListBox.RenderTransform>
+        	</ListBox>
+        	<Button x:Name="cr_up" Click="cr_back_top" Width="297" Height="26" Content="Button" Canvas.Left="16.5" Canvas.Top="142.5" Style="{DynamicResource expand_reverse}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+        		<Button.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform/>
+        				<SkewTransform/>
+        				<RotateTransform Angle="-0.167"/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Button.RenderTransform>
+        	</Button>
+        	<Button x:Name="cr_expand" Click="creditors_expand" Width="40" Height="33.5" Content="Button" Canvas.Left="243" Canvas.Top="6" Style="{DynamicResource expand_btn}"/>
+        	<Button x:Name="print_cr" Width="38" Click="print_cr_Click" Height="32.5" Content="Button" Canvas.Left="287" Canvas.Top="7" Style="{DynamicResource print_btn}"/>
+        </Canvas>
+        <ListBox x:Name="lst_stock" Width="290.5" Height="325.5" Canvas.Left="455.5" Canvas.Top="266.5" FontFamily="Rockwell" FontSize="17.333" BorderBrush="#FF2C9EEE" Background="White" Foreground="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding name}" Width="173"/>
+    				    <TextBlock Text="{Binding balstock}" Width="100" TextAlignment="Right"/>
+    					</StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="lst_cash" Width="290.5" Height="120.5" Canvas.Left="455.5" Canvas.Top="92" FontFamily="Rockwell" FontSize="17.333" BorderBrush="#FF2C9EEE" Background="White" Foreground="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                    	<TextBlock Text="{Binding Lname}" Width="100" Cursor="Hand"/>
+                    	<TextBlock Text="{Binding CurrBalance}" Width="150 " TextAlignment="Right"/>
+    				</StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label x:Name="label" Width="190.5" Height="36.5" Content="Cash Balance:" Canvas.Left="455.5" Canvas.Top="54.5" FontFamily="Rockwell" FontSize="24"/>
+        <Canvas x:Name="top_debtor" Width="337.5" Height="163.5" Canvas.Left="74" Canvas.Top="51.496" MouseEnter="top_debtor_MouseEnter" MouseLeave="top_debtor_MouseLeave">
+        	<ListBox x:Name="lst_dr" Foreground="Black" FontFamily="Rockwell" FontSize="17.333" BorderBrush="#FF2C9EEE" Background="White" Width="333" Height="120.5" Canvas.Left="4.5" Canvas.Top="43">
+        		<ListBox.ItemTemplate>
+        			<DataTemplate>
+        				<StackPanel Orientation="Horizontal" Width="317">
+        					<TextBlock Text="{Binding Lname}" Width="185.5"/>
+        					<TextBlock Text="{Binding CurrBalance}" Width="130.834" TextAlignment="Right"/>
+        				</StackPanel>
+        			</DataTemplate>
+        		</ListBox.ItemTemplate>
+        	</ListBox>
+        	<Label x:Name="label3" Height="42" Content="Top  Debtors" FontFamily="Rockwell" FontSize="24" Width="337.5" d:LayoutOverrides="Height"/>
+        	<Button x:Name="print_btn" Click="print_btn_Click" Width="37.666" Height="35" Content="Button" Canvas.Left="291.834" Canvas.Top="4" Style="{DynamicResource print_btn}" Cursor="Hand"/>
+        	<Button x:Name="expand_btn" Width="43" Height="34" Click="expand" Content="Button" Canvas.Left="239" Canvas.Top="4" Style="{DynamicResource expand_btn}" Cursor="Hand"/>
+        	<Button x:Name="expand_reverse" Click="back_top" Style="{DynamicResource expand_reverse}" Width="329.5" Height="22" Content="Button" RenderTransformOrigin="0.5,0.5" Canvas.Top="485.5" Visibility="Hidden" Cursor="Hand">
+        		<Button.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform/>
+        				<SkewTransform/>
+        				<RotateTransform/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Button.RenderTransform>
+        	</Button>
+        </Canvas>
+        <Label x:Name="label2" Width="190.5" Height="36" Content="Stock Balance" Canvas.Left="455.5" Canvas.Top="226.5" FontFamily="Rockwell" FontSize="24"/>
+        <Path Fill="#FF2C9EEE" Stretch="Fill" Stroke="#FF2C9EEE" Width="1" Height="599.688" Canvas.Left="565.167" Canvas.Top="3.082" Data="M496.5,3 L496.5,601.68794" StrokeThickness="4" Visibility="Hidden"/>
+        <Rectangle Fill="#FF2D9FEE" Width="798.002" Height="45" Canvas.Top="-2.165" Canvas.Left="-0.002"/>
+        <Label Content="Company Stats" FontSize="32" Width="262.85" Height="51.47" Canvas.Left="260" Canvas.Top="-4.5" FontFamily="Rockwell" Foreground="White"/>
+        <Rectangle Fill="White" Width="7.161" Height="15.435" Canvas.Left="501.586" Canvas.Top="20.983"/>
+        <Rectangle Fill="White" Width="6.444" Height="26.176" Canvas.Left="511.611" Canvas.Top="10.242"/>
+        <Rectangle Fill="White" Width="7.161" Height="33.336" Canvas.Left="520.919" Canvas.Top="3.082"/>
+    </Canvas>
+</UserControl>

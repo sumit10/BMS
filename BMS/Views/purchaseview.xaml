@@ -1,0 +1,782 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="BMS.Views.purchaseview"
+    Height="600" Width="800" Loaded="UserControl_Loaded" mc:Ignorable="d">
+	<UserControl.Resources>
+		<Style x:Key="printstyle" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas Width="55.331" Height="54.334">
+							<Image x:Name="image" Width="55.333" Height="54.751"  Stretch="Fill"/>
+							<Label x:Name="label" Content="Print" Canvas.Left="12.814" Canvas.Top="32.812" FontSize="8" Width="35.529" Height="17.085" FontFamily="Evil Dead" Foreground="White">
+								<Label.Background>
+									<SolidColorBrush/>
+								</Label.Background>
+							</Label>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Foreground" TargetName="label" Value="Black"/>
+								<Setter Property="Cursor" TargetName="image" Value="Hand"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="back_btn" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas Margin="0,0,25.5,0.333">
+							<Image Width="31.828" Height="26.038" Source="new dashboard_Images/back_btn.png" Stretch="Fill"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="close" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas>
+							<Image x:Name="image1" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images/cash/close_cir.png" Stretch="Fill" Visibility="Hidden"/>
+							<Image x:Name="image" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images/cash/close.png" Stretch="Fill"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+								<Setter Property="Visibility" TargetName="image1" Value="Visible"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="save_btn" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas Margin="0,0,-11,-3.125">
+							<Image x:Name="image1" Width="124.905" Height="36.092" Visibility="Hidden" Canvas.Left="-2.572" Source="new dashboard_Images/save_revert.png" Stretch="Fill" Canvas.Top="0.533"/>
+							<Image x:Name="image" Width="124.905" Height="36.092" Canvas.Left="-2.572" Source="new dashboard_Images/SAVE_BTN.png" Stretch="Fill" Canvas.Top="0.533"/>
+							<Label x:Name="label" Width="53.53" Height="31.092" Content="Save" FontSize="18.667" Foreground="White" Canvas.Left="10.783" Canvas.Top="2.5" FontFamily="Rockwell"/>
+							<Image Width="21.419" Height="23.539" Canvas.Left="78.184" Canvas.Top="6.81" Source="new dashboard_Images/save_icon.png" Stretch="Fill"/>
+							<Image x:Name="image2" Width="21.419" Height="23.539" Visibility="Hidden" Canvas.Left="78.184" Canvas.Top="6.81" Source="new dashboard_Images/save_icon_revert.png" Stretch="Fill"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+								<Setter Property="Visibility" TargetName="image1" Value="Visible"/>
+								<Setter Property="Foreground" TargetName="label" Value="#FF2C9EEE"/>
+								<Setter Property="Visibility" TargetName="image2" Value="Visible"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<ControlTemplate x:Key="ButtonControlTemplate9" TargetType="{x:Type Button}">
+			<Canvas Height="124" Margin="0,0,-7,0">
+				<Image x:Name="image2" Width="43" Height="41" Canvas.Left="39" Canvas.Top="38" Source="new dashboard_Images\Tools.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Image Width="122" Height="123" Source="new dashboard_Images\circle copy 3.png" Stretch="Fill" Visibility="Hidden"/>
+				<Image x:Name="image" Width="122" Height="123" Source="new dashboard_Images\circle copy 3.png" Stretch="Fill" Visibility="Hidden"/>
+				<Image x:Name="image1" Width="122" Height="123" Source="new dashboard_Images\circle copy 3.png" Stretch="Fill" Visibility="Hidden"/>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+					<Setter Property="Visibility" TargetName="image1" Value="Hidden"/>
+					<Setter Property="Width" TargetName="image2" Value="70"/>
+					<Setter Property="Canvas.Left" TargetName="image2" Value="29"/>
+					<Setter Property="Height" TargetName="image2" Value="59"/>
+					<Setter Property="Canvas.Top" TargetName="image2" Value="31"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate3" TargetType="{x:Type Button}">
+			<Canvas Margin="8.5,-3.23,13.5,3.23" Width="Auto" Height="Auto">
+				<Image x:Name="image" Width="207" Height="101" RenderTransformOrigin="0.5,0.5" Source="new dashboard_Images\circle copy 4.png" Stretch="Fill">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Label x:Name="label" FontFamily="Tintin Majuscules" FontSize="18.667" Foreground="White" Canvas.Left="24.74" Canvas.Top="33" RenderTransformOrigin="0.491,0.395" Width="163" Height="32" Content="Purchase Order"/>
+				<Label x:Name="label1" Cursor="UpArrow" Content="Enter Detail of Goods to be Ordered" Foreground="Black" Visibility="Hidden" Canvas.Left="-37.774" Canvas.Top="-53.83" FontFamily="Segoe UI Semibold" FontStyle="Italic">
+					<Label.Background>
+						<SolidColorBrush/>
+					</Label.Background>
+				</Label>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="label1" Value="Visible"/>
+					<Setter Property="Canvas.Top" TargetName="image" Value="-15"/>
+					<Setter Property="Canvas.Top" TargetName="label" Value="11"/>
+					<Setter Property="Canvas.Top" TargetName="label1" Value="-68.83"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate4" TargetType="{x:Type Button}">
+			<Canvas Margin="31.586,2.585,11.414,-0.918" RenderTransformOrigin="0.5,0.5" Width="Auto">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="-180"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Image x:Name="image1" Width="207" Height="101" RenderTransformOrigin="0.5,0.5" Canvas.Left="-51" Canvas.Top="58" Source="new dashboard_Images\circle copy 4.png" Stretch="Fill" Visibility="Visible">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="90"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Label x:Name="label" Content="Cash Purchase" FontFamily="Tintin Majuscules" FontSize="21.333" Foreground="White" RenderTransformOrigin="0.5,0.5" Canvas.Left="-30.669" Canvas.Top="88.998">
+					<Label.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="90"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Label.RenderTransform>
+				</Label>
+				<Label x:Name="label1" Cursor="UpArrow" Content="Entry For Purchase Done&#xa; On Cash Basis" Foreground="Black" Visibility="Hidden" Canvas.Left="129.201" Canvas.Top="88.575" RenderTransformOrigin="0.5,0.5">
+					<Label.Background>
+						<SolidColorBrush/>
+					</Label.Background>
+					<Label.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="180"/>
+							<TranslateTransform X="-0.0041692205411332089" Y="0.0086422004418569287"/>
+						</TransformGroup>
+					</Label.RenderTransform>
+				</Label>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="label1" Value="Visible"/>
+					<Setter Property="Canvas.Left" TargetName="image1" Value="-36"/>
+					<Setter Property="Canvas.Left" TargetName="label" Value="-15.669"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate8" TargetType="{x:Type Button}">
+			<Canvas Height="Auto" Margin="0,0,-1.897,-0.222">
+				<Image x:Name="image1" Width="207" Height="101" RenderTransformOrigin="0.5,0.5" Source="new dashboard_Images\circle copy 4.png" Stretch="Fill">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="180"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Image x:Name="image_Copy" Width="207" Height="101" RenderTransformOrigin="0.5,0.5" Source="new dashboard_Images\circle copy 4.png" Stretch="Fill" Visibility="Visible">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="180"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Label x:Name="label" Content="Report" FontFamily="Tintin Majuscules" FontSize="24" Foreground="White" Canvas.Left="59.814" Canvas.Top="41.829" RenderTransformOrigin="0.633,0.667"/>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Canvas.Top" TargetName="image1" Value="15"/>
+					<Setter Property="Canvas.Top" TargetName="image_Copy" Value="15"/>
+					<Setter Property="Canvas.Top" TargetName="label" Value="68.82"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate x:Key="ButtonControlTemplate7" TargetType="{x:Type Button}">
+			<Canvas Height="Auto" Width="Auto" Margin="1.539,2.001,24.546,-2.928" RenderTransformOrigin="0.5,0.5">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="2.325"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Image x:Name="image" Width="207" Height="101" RenderTransformOrigin="0.5,0.5" Canvas.Left="-76.232" Canvas.Top="45.13" Source="new dashboard_Images\circle copy 4.png" Stretch="Fill">
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="86.716"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+				<Label x:Name="label" Content="Credit Purchase" FontFamily="Tintin Majuscules" FontSize="18.667" Foreground="White" RenderTransformOrigin="0.5,0.5" Canvas.Left="-58.385" Canvas.Top="78.052">
+					<Label.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="86.661"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Label.RenderTransform>
+				</Label>
+				<Label x:Name="label1" Cursor="UpArrow" Content="Entry For Purchase&#xa;Done On Credit Basis" Foreground="Black" Visibility="Hidden" Canvas.Left="97.004" Canvas.Top="58.486" RenderTransformOrigin="0.5,0.5" Width="200.727" FontFamily="Segoe UI Semibold" FontStyle="Italic">
+					<Label.Background>
+						<SolidColorBrush/>
+					</Label.Background>
+					<Label.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="357.747"/>
+							<TranslateTransform X="0.0212685089271299" Y="-2.6746988331146757"/>
+						</TransformGroup>
+					</Label.RenderTransform>
+				</Label>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="label1" Value="Visible"/>
+					<Setter Property="Canvas.Left" TargetName="image" Value="-61.232"/>
+					<Setter Property="Canvas.Left" TargetName="label" Value="-16.572"/>
+					<Setter Property="Canvas.Left" TargetName="label1" Value="112.004"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style x:Key="close2" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas Margin="0,3,0,0">
+							<Image x:Name="image1" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images\cash\close_cir.png" Stretch="Fill" Visibility="Hidden"/>
+							<Image x:Name="image" Width="28" Height="27" Canvas.Left="6" Canvas.Top="-3" Source="new dashboard_Images\cash\close.png" Stretch="Fill"/>
+							<Ellipse x:Name="ellipse" Fill="{x:Null}" Stroke="#FF27A7FF" Width="29.75" Height="27" Canvas.Left="5" Canvas.Top="-3" Visibility="Hidden"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Visibility" TargetName="image" Value="Hidden"/>
+								<Setter Property="Visibility" TargetName="image1" Value="Visible"/>
+								<Setter Property="Visibility" TargetName="ellipse" Value="Hidden"/>
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="back_btn2" TargetType="{x:Type Button}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Canvas Margin="0,0,25.5,0.333">
+							<Image Width="31.828" Height="26.038" Source="new dashboard_Images\back_btn.png" Stretch="Fill"/>
+						</Canvas>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsKeyboardFocused" Value="true"/>
+							<Trigger Property="ToggleButton.IsChecked" Value="true"/>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="#ADADAD"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+			<VirtualizingStackPanel IsItemsHost="True"/>
+		</ItemsPanelTemplate>
+		<Storyboard x:Key="purchase_wheel">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Button_Wheel1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.034"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1.039"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Button_Wheel1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.034"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1.039"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Button_Wheel1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="purchase_order">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="purchase" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="purchase" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.5000000" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Button_Wheel1" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.5000000" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="purchase_setting">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Setting" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="15"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Setting" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Setting" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.3000000" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.5000000" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="purchase_ivoice">
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="invoice_details" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="invoice_details" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.17"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.287"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="purchase_report">
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="purchase_report" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="purchase_report" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.265"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="fade_out_purchase">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="layout" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+			<Canvas Height="39">
+				<Image x:Name="image" Width="81" Height="48" Source="/BMS;Component/new dashboard/new dashboard_Images/error.png" Stretch="Fill" Canvas.Left="-5" Canvas.Top="-6" Visibility="Hidden"/>
+				<Image x:Name="image1" Width="81" Height="48" Source="/BMS;Component/new dashboard/new dashboard_Images/erroe3.png" Stretch="Fill" Canvas.Left="-5" Canvas.Top="-6"/>
+			</Canvas>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Visibility" TargetName="image" Value="Visible"/>
+					<Setter Property="Visibility" TargetName="image1" Value="Hidden"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+	</UserControl.Resources>
+    <Canvas x:Name="layout" FocusManager.IsFocusScope="True">
+    	<Rectangle Fill="White" Stroke="#FF2C9EEE" RadiusX="14.5" RadiusY="14.5" Width="800" Height="600"/>
+    	<Rectangle Fill="#FF27A7FF" Width="800" Height="39" RenderTransformOrigin="0.502,0.111"/>
+    	<Canvas x:Name="Button_Wheel1" Width="421" Height="326.342" Canvas.Left="188.5" Canvas.Top="141.658" RenderTransformOrigin="0.5,0.5">
+    		<Canvas.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Canvas.RenderTransform>
+    		<Button Width="122" Content="Settings" Click="setting_click" Template="{DynamicResource ButtonControlTemplate9}" RenderTransformOrigin="1.314,0.435" Canvas.Left="153" Canvas.Top="100"/>
+    		<Button Width="228" Click="Button_purchase_Order" RenderTransformOrigin="4.22,19.467" Canvas.Left="101.833" Canvas.Top="9" Height="102" Template="{DynamicResource ButtonControlTemplate3}" FontSize="18.667">
+    			<Button.Background>
+    				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    					<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    					<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+    					<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+    					<GradientStop Color="#FFE84800" Offset="1"/>
+    				</LinearGradientBrush>
+    			</Button.Background>
+    		</Button>
+    		<Button Width="140" Click="purchase_Button_Click_1" Height="202" Content="Cash Purchase" Template="{DynamicResource ButtonControlTemplate4}" Canvas.Left="35.667" FontSize="18.667" Canvas.Top="66.987"/>
+    		<Button Width="208.715" x:Name="purchasereportmenu" Click="purchasereportmenu_Click" Canvas.Left="112.827" Canvas.Top="212.385" Template="{DynamicResource ButtonControlTemplate8}" Height="100.392" FontSize="18.667" RenderTransformOrigin="0.5,0.5" Opacity="0.99" Content="V">
+    			<Button.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform/>
+    					<SkewTransform/>
+    					<RotateTransform Angle="-0.308"/>
+    					<TranslateTransform/>
+    				</TransformGroup>
+    			</Button.RenderTransform>
+    			<Button.Background>
+    				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    					<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    					<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+    					<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+    					<GradientStop Color="#FFEBFFFF" Offset="1"/>
+    				</LinearGradientBrush>
+    			</Button.Background>
+    		</Button>
+    		<Button Click="purchase_Button_Click" Width="81" Content="Credit Purchase" Canvas.Top="60.655" FontSize="18.667" RenderTransformOrigin="0.505,0.565" Template="{DynamicResource ButtonControlTemplate7}" Height="202.212" Canvas.Left="289.731"/>
+    		<TextBox Width="4" Height="1.5" Canvas.Left="31.667" Canvas.Top="160" Text="TextBox" TextWrapping="Wrap"/>
+    	</Canvas>
+    	<Canvas x:Name="purchase" Width="800" Height="570" Canvas.Top="30" Visibility="Hidden">
+    		<Button Width="32.167" Content="Back" Canvas.Left="14" Canvas.Top="-26.039" Cursor="Hand" Click="back_click" Style="{DynamicResource back_btn}" Height="25.333"/>
+    		<TextBox Canvas.Left="216.602" Canvas.Top="51.629" Height="23" x:Name="txtvno" Width="48.592" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+    		<TextBox Canvas.Left="171.602" Canvas.Top="94.5" Height="22.864" x:Name="txtcustomer" Width="121.478" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+    		<TextBox Canvas.Left="27.149" Canvas.Top="170.193" Height="22.864" x:Name="txtcomname" Width="127.515" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+    		<TextBox Canvas.Left="185.131" KeyUp="txtquantity_KeyUp" Canvas.Top="170.193" Height="22.864" x:Name="txtquantity" Width="56.339" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16"/>
+    		<ComboBox Canvas.Left="277.253" Canvas.Top="170.057" Height="23" x:Name="cmb_uom" Width="61.751" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" />
+    		<TextBox Canvas.Left="392.621" KeyUp="txtquantity_KeyUp" GotFocus="txtrate_GotFocus" Canvas.Top="170.193" Height="22.864" x:Name="txtrate" Width="59.727" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16"/>
+    		<TextBox Canvas.Left="487.641" Canvas.Top="170.193" Height="22.864" x:Name="txtamount" Width="121.478" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+    		<my:DatePicker xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Canvas.Left="650.984" Canvas.Top="51.629" Height="27.96" x:Name="datePicker1" Width="117.244" Background="#ACFFFFFF" >
+    			<my:DatePicker.BorderBrush>
+    				<LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+    					<GradientStop Color="#FFA3AEB9" Offset="0"/>
+    					<GradientStop Color="#FF8399A9" Offset="0.375"/>
+    					<GradientStop Color="#FF718597" Offset="0.375"/>
+    					<GradientStop Color="White" Offset="1"/>
+    				</LinearGradientBrush>
+    			</my:DatePicker.BorderBrush>
+    		</my:DatePicker>
+    		<ListBox Canvas.Left="35.308" Canvas.Top="264.5" Height="206.5" x:Name="listBox1" KeyUp="listBox1_KeyUp" Width="499.828" FontFamily="Rockwell" FontSize="16"  >
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<StackPanel Orientation="Horizontal">
+    						<TextBlock Text="{Binding pcomname}" Width="150"/>
+    						<TextBlock Text="{Binding pqnty}" Width="20"/>
+    						<TextBlock Text="{Binding puom}" Width="70"/>
+    						<TextBlock Text="{Binding prate}" Width="60"/>
+    						<TextBlock Text="{Binding ex_type}" Width="20"/>
+    						<TextBlock Text="{Binding pamt}" Width="100" TextAlignment="Right"/>
+    					</StackPanel>
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+        
+    		<Label Canvas.Left="20.5" Canvas.Top="45.629" Height="34" x:Name="label1" Width="199.306" Content="Supplier  Invoice  No." FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="17.5" Canvas.Top="87.864" Height="28" x:Name="label2" Width="149.978" Content="Customer Name" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="487.641" Canvas.Top="129" Height="28" x:Name="label3" Width="77.424" Content="Amount" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="178.292" Canvas.Top="129" Height="32.5" x:Name="label4" Width="84.178" Content="Quantity" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="392.658" Canvas.Top="129" Height="28" x:Name="label5" Width="59.69" Content="Rate" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="16.649" Canvas.Top="129" Height="34" x:Name="label6" Width="148.478" Content="Comodity Name" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="185.131" Canvas.Top="200" Height="34" x:Name="label7" Width="162.245" Content="Remaining Stock:" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="376.121" Canvas.Top="528.5" Height="28" x:Name="lbl_total" Width="52.566" Content="Total" FontFamily="Rockwell" FontSize="18.667"/>
+    		<TextBox Canvas.Left="439.711" Canvas.Top="522" Height="40" x:Name="txttotalamount" Width="95.425" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+        
+    		<Label Canvas.Left="340.363" Canvas.Top="200.5" Height="33.5" x:Name="lbl_remainingbal" Width="63.141" BorderThickness="0,0,0,1" BorderBrush="#FF51ADED" FontFamily="Rockwell" FontSize="14.667"/>
+    		<Button x:Name="btnorder" Click="btnorder_Click" Width="75" Content="Order" Canvas.Left="567.228" Canvas.Top="517.04" Height="21.96" Style="{DynamicResource order_btn}" RenderTransformOrigin="0.73,0.59" Visibility="Hidden" />
+    		<Canvas x:Name="Aditional_Chatges" Width="235.746" Height="239.333" Canvas.Left="532.482" Canvas.Top="245" >
+    			<TextBox Canvas.Left="23.716"  Canvas.Top="43.357" Height="22" KeyUp="txtacrate_KeyUp" x:Name="txtacrate" Width="92.302" Background="{x:Null}" BorderBrush="#FFBBBBBB" BorderThickness="0,0,0,2" RenderTransformOrigin="0.5,0.5" Foreground="Black" FontFamily="Rockwell" FontSize="16" >
+    				<TextBox.RenderTransform>
+    					<TransformGroup>
+    						<ScaleTransform/>
+    						<SkewTransform/>
+    						<RotateTransform Angle="-0.469"/>
+    						<TranslateTransform/>
+    					</TransformGroup>
+    				</TextBox.RenderTransform>
+    			</TextBox>
+    			<TextBox Canvas.Left="72.664" Canvas.Top="89.136" Height="22" x:Name="txtdisrate" Visibility="Hidden" KeyUp="txtdisrate_KeyUp" Width="42" />
+    			<TextBox Canvas.Left="66.664" Canvas.Top="90.016" Height="22" x:Name="txtvatrate1" KeyUp="txtvatrate1_KeyUp" Width="42" BorderBrush="#FFBBBBBB" Background="{x:Null}" BorderThickness="0,0,0,2" Foreground="Black" FontFamily="Rockwell" FontSize="16" />
+    			<Label x:Name="lblac" Width="219.362" Height="32.854" Content="Transportation Charges:" Canvas.Left="12.268" Canvas.Top="12.5" FontFamily="Rockwell" FontSize="18.667"/>
+    			<Label x:Name="lbldc" Width="63.399" Height="31" Content="Discount" Visibility="Hidden" Canvas.Left="12.583" Canvas.Top="56.854"/>
+    			<Label x:Name="lblvat" Width="48.658" Height="29.63" Content="VAT" Canvas.Left="13.568" Canvas.Top="88.386" RenderTransformOrigin="0.524,0.495" FontFamily="Rockwell" FontSize="18.667"/>
+    			<Label Width="27.75" Height="25" Content="%" Visibility="Hidden" Canvas.Left="95.268" Canvas.Top="149.136"/>
+    			<Label Width="27.75" Height="25" Content="%" Canvas.Left="95.268" Canvas.Top="86.136" Visibility="Hidden"/>
+    			<TextBox x:Name="txtvat" Width="67.5" Height="22" Canvas.Left="144.664" Canvas.Top="90.016" TextWrapping="Wrap" BorderBrush="#FFBBBBBB" Background="{x:Null}" BorderThickness="0,0,0,2" Foreground="Black" FontFamily="Rockwell" FontSize="16"/>
+    		</Canvas>
+    		<Label Width="89" Height="30.919" Content="Round of" Canvas.Left="342.687" Canvas.Top="482.435" RenderTransformOrigin="0.429,0.539" FontFamily="Rockwell" FontSize="18.667"/>
+    		<TextBox x:Name="txtroundof" GotFocus="txtroundof_GotFocus" Width="94.271" Height="30.919" Canvas.Left="440.865" Canvas.Top="482.435" TextWrapping="Wrap" BorderThickness="0,0,0,1" Background="{x:Null}" BorderBrush="#FFBBBBBB" Foreground="Black" FontFamily="Rockwell" FontSize="16"/>
+    		<Button Canvas.Left="555.641" Canvas.Top="513.04" Height="23" Width="75.924" Name="button1" Click="button1_Click" Content="Save" Style="{DynamicResource save_btn}"/>
+    		<TextBox Canvas.Left="213.878" Canvas.Top="51.629" Height="23" x:Name="txtorderno" Width="48.592" IsEnabled="False" BorderThickness="0,0,0,1" Background="{x:Null}" Foreground="Black" >
+    			<TextBox.BorderBrush>
+    				<LinearGradientBrush EndPoint="0,20" StartPoint="0,0" MappingMode="Absolute">
+    					<GradientStop Color="#FFABADB3" Offset="0.05"/>
+    					<GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+    					<GradientStop Color="#FF767676" Offset="1"/>
+    				</LinearGradientBrush>
+    			</TextBox.BorderBrush>
+    		</TextBox>
+    		<Button x:Name="btncomitorder" Click="btncomitorder_Click" Width="102.244" Content="Commit Order" Canvas.Left="569.984" Canvas.Top="514.08" Height="21.96" Style="{DynamicResource save_btn}" Visibility="Hidden"/>
+    		<Rectangle Fill="#FF2C9EEE" RadiusX="6" RadiusY="6" Width="499.828" Height="25.5" Canvas.Left="33.308" Canvas.Top="237.5"/>
+    		<Label Width="470" Height="29" Content="Commodity Name     Quantity      Rate                   Total Amount " FontFamily="Rockwell" FontSize="16" Foreground="White" Canvas.Left="41.278" Canvas.Top="236"/>
+    		<Label Canvas.Left="643.484" Canvas.Top="330" Height="32.5" x:Name="label4_Copy" Width="34.678" Content="%" FontFamily="Rockwell" FontSize="21.333"/>
+    		<ListBox Canvas.Left="842.127" Canvas.Top="75.864" Height="169" x:Name="list_comname" Width="198.713" Background="#FF2D9FEE" Opacity="1" Foreground="White" BorderBrush="White" FontFamily="Rockwell" FontSize="16" Visibility="Hidden" >
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<TextBlock Text="{Binding name}" Width="172"/>    
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+    		<ListBox Canvas.Left="842.127" Canvas.Top="281" Height="157" x:Name="list_customer" Width="198.713" Background="#FF2D9FEE" Opacity="1" Foreground="White" BorderBrush="White" FontFamily="Rockwell" FontSize="16" Visibility="Hidden">
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<TextBlock Text="{Binding name}" Width="274" Height="24.5" />    
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+    	</Canvas>
+    	<Canvas x:Name="Setting" Width="540.5" Height="210" Canvas.Top="198.658" Canvas.Left="150" RenderTransformOrigin="0.5,0.5" OpacityMask="Black" Background="White" Visibility="Hidden">
+    		<Canvas.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Canvas.RenderTransform>
+    		<Rectangle Fill="White" Stroke="#FF27A7FF" Width="540.5" Height="210" RadiusX="17.5" RadiusY="17.5"/>
+    		<Button Width="35.75" Height="26.5" Content="X" Canvas.Left="492" Canvas.Top="8" Click="Button_Click_2" Style="{DynamicResource close2}" />
+    		<CheckBox x:Name="cb_additionalcharges" Height="20" Content="Do You Want to Enable Additional charges" Checked="cb_additionalcharges_Checked" Unchecked="cb_additionalcharges_Unchecked" Width="272.467" Canvas.Left="13.533" Canvas.Top="39.207"/>
+    		<TextBlock Height="21.333" Text="Create Additional Charges Account" TextWrapping="Wrap" Width="200.926" Canvas.Left="13.533" Canvas.Top="88.207"/>
+    		<TextBox x:Name="txtac" Height="21.333" TextWrapping="Wrap" IsEnabled="False" HorizontalAlignment="Left" Width="104.874" Background="{x:Null}" BorderThickness="0,0,0,1" Canvas.Left="218.459" Canvas.Top="88.207" >
+    			<TextBox.BorderBrush>
+    				<LinearGradientBrush EndPoint="0,20" StartPoint="0,0" MappingMode="Absolute">
+    					<GradientStop Color="#FFABADB3" Offset="0.05"/>
+    					<GradientStop Color="#FFE2E3EA" Offset="0.07"/>
+    					<GradientStop Color="#FF929292" Offset="1"/>
+    				</LinearGradientBrush>
+    			</TextBox.BorderBrush>
+    		</TextBox>
+    		<Button x:Name="btnac" Width="62" Height="21.333" Content="Creare" IsEnabled="False" Click="btnac_Click" Canvas.Left="352.333" Canvas.Top="88.207" />
+    		<CheckBox x:Name="cb_discount" Height="20" Content="Do You Want to Enable Discount" Checked="cb_discount_Checked" Unchecked="cb_discount_Unchecked" Visibility="Hidden" Width="272.489" Canvas.Left="8.113" Canvas.Top="124.207"/>
+    		<CheckBox x:Name="cb_vat" Content="Do You Want to Enable VAT" Checked="cb_vat_Checked" Unchecked="cb_vat_Unchecked" Height="20" Width="272.554" Canvas.Left="13.533" Canvas.Top="135.207"/>
+    	</Canvas>
+    	<Canvas x:Name="invoice_details" Width="800" Height="564" Canvas.Top="36" Visibility="Hidden">
+    		<Button x:Name="rback" Click="rback_Click" Width="32.167" Content="Back" Canvas.Left="13.167" Canvas.Top="-32.538" Cursor="Hand" Style="{DynamicResource back_btn2}" Height="24.333" />
+    		<my:DatePicker xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Canvas.Left="576.818" Canvas.Top="21" Height="27.96" x:Name="rp_datePicker" Width="175.077" Background="#ACFFFFFF" FontFamily="Rockwell" FontSize="18.667"  >
+    			<my:DatePicker.BorderBrush>
+    				<LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+    					<GradientStop Color="#FFA3AEB9" Offset="0"/>
+    					<GradientStop Color="#FF8399A9" Offset="0.375"/>
+    					<GradientStop Color="#FF718597" Offset="0.375"/>
+    					<GradientStop Color="White" Offset="1"/>
+    				</LinearGradientBrush>
+    			</my:DatePicker.BorderBrush>
+    		</my:DatePicker>
+    		<ListBox Canvas.Left="87.5" Canvas.Top="166.5" Height="298" x:Name="listBox2" KeyUp="listBox1_KeyUp" Width="414.828"  Background="{x:Null}" BorderBrush="#FF2C9EEE" FontSize="16" FontFamily="Rockwell"  >
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+    						<TextBlock Text="{Binding pcomname}" Width="100"/>
+    						<TextBlock Text="{Binding pqnty}" Width="57"/>
+    						<TextBlock Text="{Binding puom}" Width="58" Margin="10,0,0,0"/>
+    						<TextBlock Text="{Binding prate}" Width="60"/>
+    						<TextBlock Text="{Binding pamt}" Width="100" TextAlignment="Right"/>
+    					</StackPanel>
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+
+    		<Label Canvas.Left="35" Canvas.Top="44.129" Height="32.5" x:Name="label9" Width="114.806" Content="Voucher No" RenderTransformOrigin="0.518,1.042" FontFamily="Rockwell" FontSize="18.667"/>
+    		<Label Canvas.Left="35" Canvas.Top="92.864" Height="31" x:Name="label10" Width="148.478" Content="Customer Name" FontFamily="Rockwell" FontSize="18.667"/>
+    		<ListBox Canvas.Left="842.127" Canvas.Top="75.864" Height="133" x:Name="list_comname1" Width="140.713" Background="AliceBlue" Visibility="Hidden" Opacity="1" >
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<TextBlock Text="{Binding name}" Width="100"/>    
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+    		<Label Canvas.Left="349.125" Canvas.Top="512.5" Height="31.02" x:Name="lbl_total1" Width="86.211" Content="Total" FontFamily="Rockwell" FontSize="18.667"/>
+
+    		<Label Canvas.Left="286.363" Canvas.Top="199" Height="28" x:Name="lbl_remainingbal1" Width="52.641"/>
+    		<Button x:Name="btnorder1" Width="75" Content="Order" Canvas.Left="693.228" Click="btnorder1_Click" Canvas.Top="519.04" Visibility="Hidden" Height="21.96" />
+    		<ListBox Canvas.Left="842.127" Canvas.Top="281" Height="157" x:Name="list_customer1" Width="140.713" Background="AliceBlue" Visibility="Hidden" Opacity="1">
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<TextBlock Text="{Binding name}" Width="100" />    
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+    		<Canvas x:Name="Aditional_Chatges1" Width="235.746" Height="97.333" Canvas.Left="541.828" Canvas.Top="166">
+    			<Label x:Name="lblac1" Width="225.237" Height="32.854" Content="Transportation Charges:" FontFamily="Rockwell" FontSize="18.667" Canvas.Left="4.5" Canvas.Top="1.5"/>
+    			<Label x:Name="lblvat1" Width="50.414" Height="29.756" Content="VAT" Canvas.Left="8" Canvas.Top="82.577" RenderTransformOrigin="0.562,1.21" FontFamily="Rockwell" FontSize="18.667"/>
+    			<Label Width="32.25" Height="29.5" Content="%" Canvas.Left="121.518" Canvas.Top="82.833" FontFamily="Rockwell" FontSize="18.667"/>
+    			<Label x:Name="rp_tnsp" Width="75.404" Height="26.854" Content=" " Canvas.Left="10.737" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16" Canvas.Top="36"/>
+    			<Label x:Name="rp_vat" Width="50.414" Height="29.756" Content="" Canvas.Left="62.414" Canvas.Top="82.577" RenderTransformOrigin="0.562,1.21" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    			<Label x:Name="rp_vatrate" Width="50.414" Height="29.756" Content="" Canvas.Left="168.768" Canvas.Top="82.577" RenderTransformOrigin="0.562,1.21" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    		</Canvas>
+    		<Label Width="90.211" Height="28.453" Content="Round of" Canvas.Left="345.125" Canvas.Top="471.047" RenderTransformOrigin="0.429,0.539" FontFamily="Rockwell" FontSize="18.667"/>
+    		<!--<Button Width="102" Height="60.493" Content="Print" x:Name="print1" Click="print_Click" Canvas.Left="597.482" Canvas.Top="477.047" Style="{DynamicResource printstyle}" Cursor="Hand"/>-->
+    		<Label Canvas.Left="190.167" Canvas.Top="48.629" Height="28" x:Name="rp_vno" Width="35.306" Content="" RenderTransformOrigin="0.466,0.585" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    		<Label Canvas.Left="188.978" Canvas.Top="89.864" Height="28" x:Name="rp_customer" Width="121.478" Content=" " BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    		<Label x:Name="rp_round" Width="70.711" Height="33.933" Content="" Canvas.Left="442.292" Canvas.Top="471.047" RenderTransformOrigin="0.429,0.539" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    		<Label Canvas.Left="442.292" Canvas.Top="519.04" Height="28.52" x:Name="rp_total" Width="74.211" Content="" BorderThickness="0,0,0,1" Background="#007E7E7E" Foreground="Black" BorderBrush="#FF707070" FontFamily="Rockwell" FontSize="16"/>
+    		<Rectangle Fill="#FF2C9EEE" RadiusX="6" RadiusY="6" Width="421.5" Height="27" Canvas.Left="83.5" Canvas.Top="140"/>
+    		<Label Width="417" Height="26" Content="Commodity Name     Quantity      Rate                   Total Amount " FontFamily="Rockwell" FontSize="13.333" Canvas.Left="92" Canvas.Top="139" Foreground="White"/>
+    	</Canvas>
+    	<Canvas x:Name="purchase_report" Width="800" Height="600" Visibility="Hidden">
+    		<Rectangle x:Name="search_bar" Fill="White" Stroke="#FF2C9EEE" RadiusX="3.5" RadiusY="3.5" Width="588" Height="51" Canvas.Left="186" Canvas.Top="46.5"/>
+    		<Label Width="85" Height="34.5" Content="Search" FontFamily="Rockwell" FontSize="18.667" Foreground="#FF2C9EEE" Canvas.Left="186" Canvas.Top="41.5"/>
+    		<Rectangle x:Name="header" Fill="#FF2C9EEE" RadiusX="3.5" RadiusY="3.5" Width="603.917" Height="24" Canvas.Left="177.083" Canvas.Top="121.25"/>
+    		<ListBox x:Name="lst_report" Width="600.5" Height="450.5" Canvas.Top="144.5" MouseDoubleClick="lst_report_MouseDoubleClick" Canvas.Left="179"  BorderBrush="#FF2C9EEE" FontFamily="Rockwell" FontSize="16" ItemsPanel="{DynamicResource ItemsPanelTemplate1}">
+    			<ListBox.ItemTemplate>
+    				<DataTemplate>
+    					<StackPanel Orientation="Horizontal" x:Name="srmo" Margin="0,0,0,25"> 
+    						<TextBlock Text="{Binding vid}" Width="68" TextAlignment="Center"/>
+    						<TextBlock Text="{Binding pdate}" Width="199" TextAlignment="Center"/> 
+    						<TextBlock Text="{Binding customername}" Width="220" TextAlignment= "Center"/> 
+    						<TextBlock Text="{Binding vtotal}" Width="100" TextAlignment="Center"/> 
+    					</StackPanel>
+    					<DataTemplate.Triggers>
+    						<Trigger SourceName="srmo" Property="IsMouseOver" Value="True">
+    							<Setter TargetName="srmo" Property="Background" Value="Gray"/>
+    						</Trigger>
+    					</DataTemplate.Triggers>
+    				</DataTemplate>
+    			</ListBox.ItemTemplate>
+    		</ListBox>
+    		<TextBox x:Name="txtsvno" Width="130.5" Height="28.5" Canvas.Left="284" Canvas.Top="64.999" KeyUp="txtsvno_KeyUp" TextWrapping="Wrap" BorderBrush="#FF747474" Background="{x:Null}" BorderThickness="0,0,0,1" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="Black"/>
+    		<TextBox x:Name="txtscousname" Width="181.5" Height="28.5" Canvas.Left="563" KeyUp="txtscusname_KeyUp" Canvas.Top="64.498" TextWrapping="Wrap" BorderBrush="#FF747474" Background="{x:Null}" BorderThickness="0,0,0,1" FontFamily="Segoe UI Semibold" FontSize="16" Foreground="Black"/>
+    		<Canvas x:Name="no_invoice_found" Width="303.984" Height="107.5" Visibility="Hidden">
+    			<Rectangle x:Name="invoi_number_ot_found" Fill="White" Stroke="#FF2C9EEE" RadiusX="11.5" RadiusY="11.5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="286" Height="71.5" Canvas.Left="343.5" Canvas.Top="298.5"/>
+    			<Label x:Name="lblnoinvoice" Width="292.5" Height="49.5" Content="No Invoice found" Canvas.Left="357" Canvas.Top="313.5" Background="{x:Null}" FontFamily="Tintin Majuscules" FontSize="29.333" Foreground="#FFEE2C2C"/>
+    		</Canvas>
+    		<Label Width="143.086" Height="36.5" Content="Customer Name" Canvas.Left="421.414" Canvas.Top="68" FontFamily="Eurostile" FontSize="18.667"/>
+    		<Label Width="113.984" Height="36.5" Content="Invoice No." FontFamily="Eurostile" FontSize="18.667" Canvas.Left="190" Canvas.Top="71" d:LayoutOverrides="Width"/>
+    		<Button x:Name="rpback" Click="rpback_Click" Width="33" Height="29" Content="Back" Canvas.Left="13.83" Canvas.Top="3.752" Style="{DynamicResource back_btn2}"/>
+    		<Button x:Name="btnpurchaseorder" Width="117.5" Click="btnsaleorder_Click" Content="Sales Order Report" Canvas.Left="22" Canvas.Top="132" Height="34.5">
+    			<Button.Template>
+    				<ControlTemplate TargetType="{x:Type Button}">
+    					<Canvas>
+    						<Rectangle x:Name="rectangle" Fill="White" Stroke="#FF2C9EEE" RadiusX="6.5" RadiusY="6.5" Width="145" Height="47" Canvas.Left="-13"/>
+    						<Label x:Name="label" Content="PURCHASE ORDER &#xa;    REPORT" FontFamily="Tintin Majuscules" FontSize="14.667" Foreground="#FF2C9EEE" Canvas.Left="-13" Canvas.Top="1.806"/>
+    					</Canvas>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsMouseOver" Value="True">
+    							<Setter Property="Fill" TargetName="rectangle" Value="#FF2C9EEE"/>
+    							<Setter Property="Stroke" TargetName="rectangle" Value="{x:Null}"/>
+    							<Setter Property="Foreground" TargetName="label" Value="White"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Button.Template>
+    		</Button>
+    		<Button x:Name="btnpurchasreport" Width="117.5" Click="btnsalereport_Click" Height="34.5" Content="Sales Report" Canvas.Left="22" Canvas.Top="201.155">
+    			<Button.Template>
+    				<ControlTemplate TargetType="{x:Type Button}">
+    					<Canvas>
+    						<Rectangle x:Name="rectangle" Fill="White" Stroke="#FF2C9EEE" RadiusX="6.5" RadiusY="6.5" Width="139" Height="42" Canvas.Left="-10" Canvas.Top="1"/>
+    						<Label x:Name="label" Content="PURCHASE REPORT" FontFamily="Tintin Majuscules" FontSize="13.333" Foreground="#FF2C9EEE" Canvas.Left="-9.587" Canvas.Top="8.503"/>
+    					</Canvas>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsMouseOver" Value="True">
+    							<Setter Property="Fill" TargetName="rectangle" Value="#FF2C9EEE"/>
+    							<Setter Property="Stroke" TargetName="rectangle" Value="{x:Null}"/>
+    							<Setter Property="Foreground" TargetName="label" Value="White"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Button.Template>
+    		</Button>
+    		<Label x:Name="Date" Width="51" Height="24" Content="Date " FontFamily="Rockwell" FontSize="14.667" Foreground="White" Canvas.Left="320.833" Canvas.Top="119.833"/>
+    		<Label x:Name="invoice_no" Width="33.5" Height="24" Content="No." Foreground="White" Canvas.Left="202.666" Canvas.Top="120.5" FontFamily="Rockwell" FontSize="13.333"/>
+    		<Label x:Name="customername" Width="123.333" Height="24" Content="Customer Name" Foreground="White" Canvas.Left="496" Canvas.Top="120.5" FontFamily="Rockwell" FontSize="14.667"/>
+    		<Label x:Name="customername_Copy" Width="66.333" Height="24" Content="Amount" Foreground="White" Canvas.Left="682.667" Canvas.Top="121.167" FontFamily="Rockwell" FontSize="14.667" RenderTransformOrigin="0.718,0.451"/>
+    		<Path Fill="White" Stretch="Fill" Stroke="#FF2C9EEE" Width="1" Height="563.628" Canvas.Left="161.5" Canvas.Top="37.5" Data="M637.5,37.5 L637.5,600.12799"/>
+    	</Canvas>
+    	<Label x:Name="lbl_header" Width="222.833" Height="34" Content="Purchase report" Canvas.Left="304.667" Canvas.Top="2" FontFamily="Tintin Majuscules" FontSize="24" Foreground="White"/>
+    	<Canvas x:Name="message_box" Width="802" Height="605.064" Background="#32000000" Canvas.Left="-2" Canvas.Top="-3.064" Visibility="Hidden">
+    		<Rectangle Fill="White" Stroke="#FF51ADED" RadiusX="15.5" RadiusY="15.5" Width="529" Height="160" Canvas.Left="156.667" Canvas.Top="227"/>
+    		<Rectangle Fill="#FF51ADED" Stroke="#FF51ADED" Width="529" Height="20.667" Canvas.Left="156.667" Canvas.Top="227"/>
+    		<Label x:Name="lbl_message" Height="34.294" Content=" Data Saved" FontFamily="Rockwell" FontSize="24" Canvas.Left="352.496" Canvas.Top="258.334"/>
+    		<Button x:Name="btn_ok" Click="msgclick" Style="{DynamicResource ok_btn}" Width="56.333" Height="48" Content="Button" Canvas.Left="392.166" Canvas.Top="299.294"/>
+    		<Label Width="73.833" Height="24.667" Content="Message" FontFamily="Tintin Majuscules" FontSize="13.333" Foreground="White" Canvas.Left="392.166" Canvas.Top="227"/>
+    		<Button x:Name="btn_error" Click="msgclick" Width="75" Content="Button" Canvas.Left="389.999" Canvas.Top="299.294" Style="{DynamicResource error}" Template="{DynamicResource ButtonControlTemplate1}"/>
+    	</Canvas>
+    </Canvas>
+</UserControl>
